@@ -1,0 +1,893 @@
+/* ---------- Colours (change here once) ---------- */
+:root{
+  --yellow:#ffe94a;
+  --blue:#1b2a8a;
+  --navy:#0b1a4d;
+  --gold:#f5b700;
+  --red:#e8412c;
+  --green:#25d366;
+  --dark:#111827;
+  --light:#fff9d6;
+}
+
+/* ---------- Reset ---------- */
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0
+}
+
+/* Marquee Tag */
+
+/* ===== Slogans on the left and right of the hero logo ===== */
+.logo-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  margin: 0 auto 15px;
+}
+
+.logo-row .hero-logo {
+  margin: 0;
+  flex-shrink: 0;            /* logo never gets squeezed */
+}
+
+.side-slogan {
+  flex: 1;
+  max-width: 260px;
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.5;
+  color: #00e5ff;
+  text-shadow: 0 0 10px rgba(0, 229, 255, 0.5);
+}
+
+.side-slogan.left {
+  text-align: right;         /* text leans toward the logo */
+  padding-right: 16px;
+  border-right: 3px solid #f5b400;
+  animation: slide-in-left 1.2s ease both;
+}
+
+.side-slogan.right {
+  text-align: left;
+  padding-left: 16px;
+  border-left: 3px solid #f5b400;
+  animation: slide-in-right 1.2s ease both;
+}
+
+@keyframes slide-in-left {
+  from { opacity: 0; transform: translateX(-40px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slide-in-right {
+  from { opacity: 0; transform: translateX(40px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* ===== Mobile: logo on top, slogans below it ===== */
+@media (max-width: 768px) {
+  .logo-row {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .logo-row .hero-logo {
+    order: -1;
+  }
+  .side-slogan {
+    max-width: 100%;
+    font-size: 17px;
+  }
+  .side-slogan.left,
+  .side-slogan.right {
+    text-align: center;
+    padding: 0;
+    border: none;
+  }
+}
+
+html{
+  scroll-behavior:smooth
+}
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  color:var(--dark);
+  line-height:1.6;
+  overflow-x:hidden
+}
+a{
+  color:inherit;
+  text-decoration:none
+}
+
+/* ---------- Common layout ---------- */
+.container{
+  width:min(1100px,92%);
+  margin:auto
+}
+.section{
+  padding:60px 0
+}
+.alt{
+  background:var(--light)
+}
+h2{
+  color:var(--blue);
+  font-size:2rem;
+  margin-bottom:24px;
+  text-align:center
+}
+.small{
+  font-size:.9rem;
+  color:#555
+}
+.center{
+  text-align:center;
+  margin-bottom:20px
+}
+.sub-h{
+  color:var(--blue);
+  margin-bottom:10px
+}
+.price-line{
+  font-weight:700;
+  color:var(--red)
+}
+.gap-top{
+  margin-top:36px
+}
+
+/* ---------- Slogan strip ---------- */
+/* .strip{
+  background:yellow;
+  color:#fff;
+  text-align:center;
+  font-weight:700;
+  padding:6px 10px;
+  font-size:.95rem
+} */
+
+/* ---------- Header and logo ---------- */
+.header{
+  position:sticky;
+  top:0;
+  background:var(--yellow);
+  z-index:50;
+  box-shadow:0 2px 8px rgba(0,0,0,.15)
+}
+.nav{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:8px 0
+}
+.logo{
+  display:flex;
+  align-items:center;
+  gap:10px
+}
+.logo-img{
+  width:54px;
+  height:54px;
+  border-radius:50%;
+  object-fit:cover;
+  border:2px solid var(--navy)
+}
+.logo-text{
+  font-size:1.5rem;
+  font-weight:800;
+  color:var(--blue);
+  line-height:1
+}
+.logo-text span{
+  color:var(--red)
+}
+.logo-text small{
+  display:block;
+  font-size:.7rem;
+  color:var(--dark);
+  font-weight:600;
+  margin-top:3px
+}
+.menu{
+  display:flex;
+  gap:12px;
+  align-items:center;
+  font-weight:600;
+  font-size:.92rem
+}
+.menu a:hover{
+  color:var(--red)
+}
+.menu-btn{
+  display:none;
+  font-size:1.8rem;
+  background:none;
+  border:none;
+  color:var(--blue);
+  cursor:pointer
+}
+
+/* ---------- Buttons ---------- */
+.btn{
+  display:inline-block;
+  padding:12px 22px;
+  border-radius:30px;
+  font-weight:700;
+  color:#fff;
+  border:none;
+  cursor:pointer;
+  font-size:1rem
+}
+.btn.call{
+  background:var(--red)
+}
+.btn.wa{
+  background:var(--green)
+}
+.btn.full{
+  width:100%
+}
+.btn:hover{
+  opacity:.9
+}
+
+/* ---------- Hero ---------- */
+.hero{
+  background:linear-gradient(135deg,var(--yellow),#ffd400);
+  text-align:center;
+  padding:50px 0 60px
+}
+.hero-logo{
+  width:190px;
+  height:190px;
+  border-radius:50%;
+  object-fit:cover;
+  display:block;
+  margin:0 auto 18px;
+  box-shadow:0 6px 24px rgba(0,0,0,.35);
+  border:4px solid #fff
+}
+/* .tag{
+  display:inline-block;
+  background:#f5b700;
+  color:purple;
+  padding:6px 16px;
+  border-radius:20px;
+  font-weight:700;
+  margin-bottom:14px
+} */
+#name{
+  color: #ffd400;
+}
+.hero h1{
+  font-size:2.6rem;
+  color:var(--blue);
+  margin-bottom:4px
+}
+.tamil{
+  font-size:1.5rem;
+  font-weight:700;
+  color:var(--red);
+  margin-bottom:6px
+}
+.motto{
+  font-weight:700;
+  letter-spacing:1px;
+  color:var(--navy);
+  margin-bottom:12px
+}
+.sub{
+  font-size:1.1rem;
+  margin-bottom:14px
+}
+.care247{
+  display:inline-block;
+  background:var(--red);
+  color:#fff;
+  font-weight:700;
+  padding:6px 18px;
+  border-radius:20px;
+  margin-bottom:10px
+}
+.status{
+  display:block;
+  width:fit-content;
+  margin:0 auto 20px;
+  padding:6px 16px;
+  border-radius:20px;
+  font-weight:700;
+  background:#fff
+}
+.status.open{
+  color:#0a8a3a
+}
+.status.closed{
+  color:#c0261b
+}
+.hero-btns{
+  display:flex;
+  gap:14px;
+  justify-content:center;
+  flex-wrap:wrap
+}
+.badges{
+  list-style:none;
+  display:flex;
+  gap:20px;
+  justify-content:center;
+  flex-wrap:wrap;
+  margin-top:26px;
+  font-weight:700
+}
+
+/* ---------- Owner ---------- */
+.owner-box{
+  background:#fff;
+  border:3px solid var(--yellow);
+  border-radius:16px;
+  padding:30px;
+  text-align:center
+}
+.avatar{
+  font-size:20rem
+}
+ .avatar2{
+  width: 400px;
+  height: 400px;
+  margin: 0 auto 15px;
+  border-radius: 50%;
+   background-image: url(./DNV.png);
+  background-size: cover;
+} 
+
+/* SURESH KUMAR */
+
+/* .avatar1{font-size:20rem} */
+.avatar1{
+  width: 400px;
+  height: 400px;
+  margin: 0 auto 15px;
+  border-radius: 50%;
+  background-image: url(./dsk.jpeg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+
+.owner-box h3{
+  color:var(--blue);
+  font-size:1.5rem
+}
+
+/* ---------- Filter buttons ---------- */
+.filters{
+  display:flex;
+  gap:10px;
+  justify-content:center;
+  flex-wrap:wrap;
+  margin-bottom:26px
+}
+.filter,.pfilter{
+  padding:8px 18px;
+  border-radius:20px;
+  border:2px solid var(--blue);
+  background:#fff;
+  color:var(--blue);
+  font-weight:700;
+  cursor:pointer
+}
+.filter.active,.pfilter.active{
+  background:aqua;
+  color:#fff
+}
+
+/* ---------- Cards ---------- */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+  align-items:start
+}
+.grid.two{
+  grid-template-columns:repeat(2,1fr)
+}
+.grid.four{
+  grid-template-columns:repeat(4,1fr)
+}
+.grid.five{
+  grid-template-columns:repeat(5,1fr)
+}
+.card{
+   background:#fff;
+   border:2px solid var(--yellow);
+   border-radius:14px;
+   padding:22px;
+   text-align:center;
+   transition:.25s
+  }
+.card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 8px 20px rgba(0,0,0,.12)
+}
+.icon{
+  font-size:2.6rem;
+  margin-bottom:8px
+}
+.card h3{
+  color:chartreuse;
+  margin-bottom:6px;
+  font-size:1.05rem
+}
+.card a.enq{
+  display:inline-block;
+  margin-top:10px;
+  color:var(--red);
+  font-weight:700
+}
+
+.card.dark{
+  background:var(--navy);
+  border-color:var(--gold)
+}
+.card.dark h3{
+  color:var(--gold)
+}
+.card.dark p{
+  color:#e5e7eb;
+  font-size:.9rem
+}
+.card.dark a.enq{
+  color:var(--yellow)
+}
+
+.card.brand{
+  border-color:var(--navy);
+  padding:28px
+}
+.card.brand h3{
+  font-size:1.6rem;
+  letter-spacing:1px
+}
+
+/* ---------- NEW: OTT Apps Installation ---------- */
+.ott-box{
+  background:#fff;
+  border:3px solid var(--yellow);
+  border-radius:16px;
+  padding:30px
+}
+.ott-box h2{
+  margin-bottom:8px
+}
+.ott-box .center{
+  color:#555
+}
+.ott-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);   /* 3 equal columns */
+  grid-auto-rows:auto;                   /* height follows content */
+  gap:18px;
+  align-items:stretch;                   /* every card in a row = same height */
+  margin-top:20px;
+}
+.ott-card{
+  background:var(--light);
+  border:2px solid var(--yellow);
+  border-radius:14px;
+  padding:20px 12px;
+  min-height:130px;                      /* small fixed minimum, NOT tall */
+  height:auto;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;                /* icon + name centred */
+  gap:8px;
+  text-align:center;
+  transition:.25s;
+}
+.ott-card:hover{
+  transform:translateY(-5px);
+  box-shadow:0 8px 20px rgba(0,0,0,.12);
+  border-color:var(--gold)
+}
+.ott-icon{
+  font-size:2.2rem;
+  line-height:1
+}
+.ott-card h3{
+  color:var(--blue);
+  font-size:1.05rem;
+  margin:0
+}
+.ott-card p{
+  font-size:.85rem;
+  color:#555;
+  margin:0
+}
+
+/* ---------- Two columns ---------- */
+.two-col{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:30px;
+  align-items:center
+}
+.two-col.top{
+  align-items:start
+}
+.two-col h2{
+  text-align:left
+}
+.note{
+  background:#fff;
+  border-left:6px solid var(--red);
+  padding:20px;
+  border-radius:10px
+}
+.note.wide{
+  margin-top:24px
+}
+.tick{
+  list-style:none;
+  margin:14px 0 20px
+}
+
+.tick li::before{
+  content:"✅ "
+}
+.tick li{
+  margin-bottom:6px
+}
+
+/* ---------- 24x7 care band ---------- */
+.care-band{
+  background:var(--navy);
+  color:#fff;
+  padding:36px 0
+}
+.care-flex{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  flex-wrap:wrap
+}
+.care-band h2{
+  color:var(--gold);
+  text-align:left;
+  margin-bottom:6px
+}
+
+/* ---------- Steps ---------- */
+.steps{
+  list-style:none;
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:14px
+}
+.steps li{
+  background:#fff;
+  padding:18px;
+  border-radius:12px;
+  text-align:center;
+  border-top:5px solid var(--red)
+}
+.steps span{
+  display:block;
+  font-size:.9rem;
+  color:#555
+}
+
+/* ---------- Form ---------- */
+.narrow{
+  width:min(650px,92%)
+}
+.form{
+  background:#fff;
+  border:2px solid var(--yellow);
+  border-radius:14px;
+  padding:24px
+}
+.form label{
+  display:block;
+  font-weight:700;
+  margin:12px 0 4px;
+  color:var(--blue)
+}
+.form input,.form select,.form textarea{
+  width:100%;
+  padding:10px;
+  border:2px solid #ccc;
+  border-radius:8px;
+  font-size:1rem
+}
+.form input:focus,.form select:focus,.form textarea:focus{
+  outline:none;
+  border-color:var(--blue)
+}
+.error{
+  color:#c0261b;
+  font-weight:700;
+  margin:10px 0;
+  min-height:1.2em
+}
+
+/* ---------- Contact ---------- */
+#contact p{
+  margin-bottom:8px
+}
+#contact a{
+  color:var(--blue);
+  font-weight:600
+}
+.map iframe{
+  border-radius:12px;
+  width:100%
+}
+
+/* ---------- Footer ---------- */
+.footer{
+  background:var(--navy);
+  color:#fff;
+  padding:40px 0 14px
+}
+.foot-grid{
+  display:grid;
+  grid-template-columns:repeat(6,1fr);
+  gap:20px
+}
+.foot-logo{
+  width:80px;
+  height:80px;
+  border-radius:50%;
+  object-fit:cover;
+  display:block;
+  margin-bottom:10px;
+  border:2px solid var(--gold)
+}
+.footer h4{
+  color:var(--gold);
+  margin-bottom:10px;
+  border-bottom:2px solid var(--gold);
+  padding-bottom:4px;
+  display:inline-block
+}
+.footer a{
+  display:block;
+  margin-bottom:6px
+}
+.footer a:hover{
+  color:var(--yellow)
+}
+.foot-slogan{
+  margin-top:8px;
+  font-weight:700;
+  color:var(--yellow)
+}
+.copy{
+  text-align:center;
+  margin-top:24px;
+  font-size:.85rem;
+  opacity:.8
+}
+
+/* ---------- Floating buttons ---------- */
+.float-wa{
+  position:fixed;
+  right:18px;
+  bottom:18px;
+  width:56px;
+  height:56px;
+  background:var(--green);
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:1.8rem;
+  box-shadow:0 4px 12px rgba(0,0,0,.3);
+  z-index:60
+}
+.top-btn{
+  position:fixed;
+  right:22px;
+  bottom:88px;
+  width:44px;
+  height:44px;
+  border-radius:50%;
+  border:none;
+  background:var(--blue);
+  color:#fff;
+  font-size:1.4rem;
+  cursor:pointer;
+  display:none;
+  z-index:60
+}
+
+/* ---------- Tablet ---------- */
+@media(max-width:1000px){
+  .grid.four,.grid.five{grid-template-columns:repeat(2,1fr)}
+  .foot-grid{grid-template-columns:repeat(3,1fr)}
+}
+
+/* ---------- Mobile ---------- */
+@media(max-width:800px){
+  .menu-btn{
+    display:block
+  }
+  .menu{
+    display:none;
+    position:absolute;
+    top:100%;
+    left:0;
+    right:0;
+    background:var(--yellow);
+    flex-direction:column;
+    padding:16px
+  }
+  .menu.show{
+    display:flex
+  }
+  .grid,.grid.two,.grid.four,.grid.five,.two-col,.steps{
+    grid-template-columns:1fr
+  }
+  .ott-grid{
+    grid-template-columns:repeat(2,1fr)
+  }   /* NEW: 2 per row on phone */
+  .foot-grid{
+    grid-template-columns:1fr 1fr
+  }
+  .two-col h2,.care-band h2{
+    text-align:center
+  }
+  .care-flex{
+    justify-content:center;
+    text-align:center
+  }
+  .hero h1{
+    font-size:1.9rem
+  }
+  .tamil{
+    font-size:1.2rem
+  }
+  .logo-img{
+    width:44px;
+    height:44px
+  }
+  .hero-logo{
+    width:150px;
+    height:150px
+  }
+}
+
+
+.ottlist h4{
+  color:#f5b700;
+  margin-bottom:10px;
+  border-bottom:2px solid #f5b700;
+  padding-bottom:4px;
+  display:inline-block
+}
+.ottlist ul{
+  list-style:none;
+  margin:0;
+  padding:0
+}
+.ottlist li{
+  margin:0 0 8px 0
+}
+.ottlist a{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:8px 12px;
+  color:#fff;
+  font-weight:600;
+  border:1px solid #f5b700;
+  border-radius:10px;
+  height:auto;
+  min-height:0;
+}
+.ottlist a:hover{
+  background:#ffe94a;
+  color:#0b1a4d
+}
+.ottlist .ic{
+  font-size:1.3rem;
+  line-height:1
+}
+/* TOP and Header */
+.top1{
+  color: yellow;
+}
+
+/* Dcocuments */
+#demo{
+  color: var(--blue);
+  }
+
+  #demo1{
+    color: yellowgreen;
+  }
+
+  /* How Its work */
+  .work{
+    color:black ;
+
+  }
+
+/* ===== DSK FUTURISTIC MOTION PACK v2 ===== */
+:root{--fx-cyan:#5cf5ff;--fx-violet:#a78bfa;--fx-bg:#07111f;--fx-glass:rgba(13,28,48,.78)}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{background:#07111f;color:#edf8ff}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;background:radial-gradient(circle at 15% 20%,rgba(0,224,255,.12),transparent 32%),radial-gradient(circle at 85% 60%,rgba(142,75,255,.13),transparent 30%),linear-gradient(135deg,#07111f,#0a1630 52%,#090e20);background-size:140% 140%;animation:fxBackground 18s ease-in-out infinite alternate}
+@keyframes fxBackground{0%{background-position:0% 0%}100%{background-position:100% 100%}}
+.strip{background:linear-gradient(90deg,#00b9d6,#6548d9,#00b9d6);background-size:220% 100%;animation:fxGradient 8s linear infinite;color:#fff}
+@keyframes fxGradient{to{background-position:220% 0}}
+.header{background:rgba(5,13,27,.86);backdrop-filter:blur(18px);border-bottom:1px solid rgba(92,245,255,.22);box-shadow:0 10px 35px #0003}
+.logo-img,.hero-logo{filter:drop-shadow(0 0 16px #41eaff70);transition:transform .5s ease,filter .5s ease}
+.logo:hover .logo-img{transform:rotate(-8deg) scale(1.08);filter:drop-shadow(0 0 22px #5cf5ff)}
+.hero{position:relative;isolation:isolate;overflow:hidden;background:radial-gradient(ellipse at 50% 10%,#163d65 0%,#0a1730 48%,#070d1c 100%);color:#f5fbff}
+.hero:before,.hero:after{content:"";position:absolute;z-index:-1;pointer-events:none;border:1px solid rgba(92,245,255,.22);border-radius:50%;width:440px;height:440px;left:50%;top:50%;transform:translate(-50%,-50%);box-shadow:0 0 45px #00d9ff14,inset 0 0 45px #8b5cf614;animation:fxOrbit 18s linear infinite}
+.hero:after{width:620px;height:620px;border-color:rgba(167,139,250,.18);animation-duration:28s;animation-direction:reverse}
+@keyframes fxOrbit{to{transform:translate(-50%,-50%) rotate(360deg) scale(1.05)}}
+.hero .container{position:relative;z-index:1}
+.hero-logo{animation:fxFloat 5s ease-in-out infinite,fxGlow 3s ease-in-out infinite alternate}
+@keyframes fxFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-13px)}}
+@keyframes fxGlow{from{filter:drop-shadow(0 0 10px #4cecff50)}to{filter:drop-shadow(0 0 28px #4cecffb0)}}
+.hero h1{background:linear-gradient(90deg,#fff,#8ef8ff,#c8b8ff,#fff);background-size:250% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:fxTextShine 7s linear infinite}
+@keyframes fxTextShine{to{background-position:250% center}}
+.btn{position:relative;overflow:hidden;transition:transform .25s ease,box-shadow .25s ease,filter .25s ease}
+.btn:before{content:"";position:absolute;top:-60%;left:-120%;width:70%;height:220%;background:linear-gradient(90deg,transparent,#ffffff65,transparent);transform:rotate(22deg);transition:left .7s ease}
+.btn:hover:before{left:150%}.btn:hover{transform:translateY(-4px) scale(1.03);box-shadow:0 10px 28px #00d9ff35;filter:saturate(1.15)}
+.section,.care-band{position:relative;background:transparent;color:#eaf6ff}
+.section.alt{background:linear-gradient(135deg,rgba(15,30,52,.92),rgba(13,20,43,.9));border-top:1px solid #5cf5ff14;border-bottom:1px solid #5cf5ff14}
+h2,.sub-h{color:#7beeff;text-shadow:0 0 18px #22d3ee22}
+.grid>*,.grid.two>*,.grid.four>*,.grid.five>*,.two-col>*,.steps>*,.foot-grid>*,.owner-box,.map,.contact-box,.product-card,.service-card,.solution-card,.brand-card{transition:transform .35s ease,box-shadow .35s ease,border-color .35s ease;transform-style:preserve-3d}
+.grid>*,.grid.two>*,.grid.four>*,.grid.five>*,.steps>*,.owner-box,.contact-box,.product-card,.service-card,.solution-card,.brand-card{background:linear-gradient(145deg,rgba(20,39,64,.86),rgba(9,21,39,.88));border:1px solid rgba(92,245,255,.16);border-radius:18px;box-shadow:0 12px 32px #0002}
+.grid>*:hover,.grid.two>*:hover,.grid.four>*:hover,.grid.five>*:hover,.steps>*:hover,.owner-box:hover,.contact-box:hover,.product-card:hover,.service-card:hover,.solution-card:hover,.brand-card:hover{transform:translateY(-8px) rotateX(2deg);border-color:rgba(92,245,255,.65);box-shadow:0 18px 40px #00cfe51b,0 0 0 1px #5cf5ff12}
+.section p,.section li,.care-band p{color:#d2e2f3}
+.tick li::marker{color:#5cf5ff}
+input,select,textarea{background:#09172a!important;color:#f4fbff!important;border:1px solid #3b6680!important;border-radius:10px!important}
+input:focus,select:focus,textarea:focus{outline:2px solid #5cf5ff70;box-shadow:0 0 0 5px #5cf5ff14}
+.footer{background:#040a15;color:#d7e8f5;border-top:1px solid #5cf5ff35}
+.footer h4{color:#7beeff}.footer a{transition:color .2s ease,transform .2s ease}.footer a:hover{color:#5cf5ff;transform:translateX(3px)}
+.float-wa{animation:fxPulse 2.3s ease-in-out infinite;box-shadow:0 0 0 0 #25d36670}
+@keyframes fxPulse{0%,100%{transform:scale(1);box-shadow:0 0 0 0 #25d36655}50%{transform:scale(1.08);box-shadow:0 0 0 13px #25d36600}}
+/* JS adds .fx-ready and .fx-reveal so every page section animates in on scroll. */
+.fx-ready .fx-reveal{opacity:0;transform:translateY(26px) scale(.985);transition:opacity .75s ease,transform .75s cubic-bezier(.2,.75,.25,1)}
+.fx-ready .fx-reveal.fx-visible{opacity:1;transform:translateY(0) scale(1)}
+.fx-ready .fx-reveal.fx-left{transform:translateX(-28px)}.fx-ready .fx-reveal.fx-right{transform:translateX(28px)}
+.fx-ready .fx-reveal.fx-left.fx-visible,.fx-ready .fx-reveal.fx-right.fx-visible{transform:translateX(0)}
+.fx-stagger>*{--fx-delay:0ms}.fx-stagger>*:nth-child(2){transition-delay:80ms}.fx-stagger>*:nth-child(3){transition-delay:140ms}.fx-stagger>*:nth-child(4){transition-delay:200ms}.fx-stagger>*:nth-child(5){transition-delay:260ms}.fx-stagger>*:nth-child(6){transition-delay:320ms}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}.fx-ready .fx-reveal{opacity:1;transform:none}}
+@media(max-width:700px){.hero:before{width:290px;height:290px}.hero:after{width:390px;height:390px}.section{padding:48px 0}.header{backdrop-filter:blur(12px)}}
+
+
+/* Slogan */
+.tag{
+  display:inline-block;
+  background:#f5b700;
+  color:purple;
+  padding:6px 16px;
+  border-radius:20px;
+  font-weight:700;
+  margin-bottom:14px
+}
+
+
+/* strip Tag Slogan */
+/* ---------- Slogan strip ---------- */
+.strip{
+  background:linear-gradient(90deg, #b8860b, #ffd700, #b8860b); /* gold shine */
+  color:darkmagenta;            /* dark text, easy to read on gold */
+  text-align:center;
+  font-weight:700;
+  padding:6px 10px;
+  font-size:.95rem;
+  letter-spacing:.5px;
+}
