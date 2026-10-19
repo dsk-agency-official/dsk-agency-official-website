@@ -211,6 +211,24 @@ h2{
   cursor:pointer
 }
 
+
+#agency{
+  color:orangered;
+}
+
+#Agency{
+  color: darkviolet;
+}
+
+
+.menu{
+  color:mediumvioletred ;
+}
+.menu:hover{
+  color: green;
+}
+
+
 /* ---------- Buttons ---------- */
 .btn{
   display:inline-block;
