@@ -1026,3 +1026,8 @@ input:focus,select:focus,textarea:focus{outline:2px solid #5cf5ff70;box-shadow:0
   font-size:.95rem;
   letter-spacing:.5px;
 }
+
+/* motto */
+.motto{
+  color:chartreuse;
+}
