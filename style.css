@@ -1031,3 +1031,182 @@ input:focus,select:focus,textarea:focus{outline:2px solid #5cf5ff70;box-shadow:0
 .motto{
   color:chartreuse;
 }
+
+
+
+
+
+/* Diwali */
+
+
+/* ===== DSK FUTURISTIC AD POPUP (pure CSS) ===== */
+#ad-toggle { 
+  display: none; 
+}
+
+/* Stop page scrolling behind the popup while it is open */
+body:has(#ad-toggle:not(:checked)) { overflow: hidden; }
+
+.ad-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px;
+  background: rgba(3, 8, 20, 0.82);
+  backdrop-filter: blur(10px);
+  animation: adFadeIn 0.6s ease 0.4s both;
+}
+
+/* Click outside the card to close */
+.ad-backdrop {
+  position: absolute;
+  inset: 0;
+  cursor: pointer;
+}
+
+/* Glowing animated neon border */
+.ad-card {
+  position: relative;
+  z-index: 1;
+  width: min(760px, 100%);
+  max-height: 94vh;
+  padding: 3px;
+  border-radius: 22px;
+  background: linear-gradient(120deg, #5cf5ff, #a78bfa, #5cf5ff, #a78bfa);
+  background-size: 300% 300%;
+  box-shadow: 0 0 60px rgba(92, 245, 255, 0.35), 0 0 120px rgba(167, 139, 250, 0.25);
+  animation: adBorder 5s linear infinite, adPop 0.7s cubic-bezier(.2, .8, .25, 1) 0.4s both;
+}
+
+.ad-inner {
+  position: relative;
+  padding: 14px 14px 16px;
+  text-align: center;
+  background: linear-gradient(145deg, #0a1730, #07111f);
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.ad-badge {
+  display: inline-block;
+  margin: 0 0 10px;
+  padding: 5px 16px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #07111f;
+  background: linear-gradient(90deg, #5cf5ff, #a78bfa);
+  border-radius: 20px;
+  animation: adBlink 2s ease-in-out infinite;
+}
+
+/* Poster with a moving scanner line */
+.ad-imgwrap {
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(92, 245, 255, 0.4);
+}
+.ad-img {
+  display: block;
+  width: 100%;
+  max-height: 66vh;
+  object-fit: contain;
+  background: #fff;
+}
+.ad-imgwrap::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 60px;
+  top: -60px;
+  background: linear-gradient(180deg, transparent, rgba(92, 245, 255, 0.35), transparent);
+  animation: adScan 3.5s linear infinite;
+  pointer-events: none;
+}
+
+/* Close button (X) */
+.ad-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 5;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  line-height: 1;
+  color: #fff;
+  background: rgba(7, 17, 31, 0.9);
+  border: 2px solid #5cf5ff;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 14px #5cf5ff;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+.ad-close:hover {
+  transform: rotate(90deg) scale(1.1);
+  background: #e8412c;
+  border-color: #e8412c;
+  box-shadow: 0 0 18px #e8412c;
+}
+
+/* Buttons under the poster */
+.ad-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+.ad-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #fff;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.ad-btn:hover { 
+  transform: translateY(-3px) scale(1.04);
+}
+.ad-call { 
+  background: #e8412c; 
+  box-shadow: 0 0 16px rgba(232, 65, 44, 0.5);
+}
+.ad-wa   { 
+  background: #25d366; 
+  box-shadow: 0 0 16px rgba(37, 211, 102, 0.5);
+}
+.ad-skip {
+  color: #7beeff;
+  background: transparent;
+  border: 2px solid #5cf5ff;
+}
+
+/* Close = hide the popup, normal website is shown */
+#ad-toggle:checked ~ .ad-overlay {
+  display: none;
+}
+
+/* Animations */
+@keyframes adFadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes adPop    { from { opacity: 0; transform: scale(0.85) translateY(30px); } to { opacity: 1; transform: scale(1) translateY(0); } }
+@keyframes adBorder { 0% { background-position: 0% 50%; } 100% { background-position: 300% 50%; } }
+@keyframes adScan   { from { top: -60px; } to { top: 100%; } }
+@keyframes adBlink  { 0%, 100% { opacity: 1; } 50% { opacity: 0.7; } }
+
+/* Mobile */
+@media (max-width: 600px) {
+  .ad-img { max-height: 56vh; }
+  .ad-btn { padding: 9px 14px; font-size: 0.85rem; }
+  .ad-close { width: 36px; height: 36px; font-size: 24px; }
+}
